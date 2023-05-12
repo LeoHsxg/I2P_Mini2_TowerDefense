@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="來源檔案">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="標頭檔">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="資源檔">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="資源檔\fonts">
+      <UniqueIdentifier>{00b8def8-c640-44ed-bf81-66b677946630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資源檔\images">
+      <UniqueIdentifier>{22c28a87-0dae-423e-9a60-6bfaf21be99e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資源檔\audios">
+      <UniqueIdentifier>{4d9ba819-4fb6-4950-84ed-cccdba323ce7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資源檔\images\lose">
+      <UniqueIdentifier>{f18e18d7-3127-4cd0-b621-16d4ec985ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資源檔\images\play">
+      <UniqueIdentifier>{97896148-5acd-4918-875e-0555480b4652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資源檔\images\stage-select">
+      <UniqueIdentifier>{5890175e-98f7-4b76-a725-34b4cabeaa2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資源檔\images\start_scene">
+      <UniqueIdentifier>{2e742b62-c473-4d2d-b9d7-4a786b372fb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="資源檔\images\win">
+      <UniqueIdentifier>{0f1837db-b76a-4a05-b1dc-f200ebcea463}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\IObject.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\IScene.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Label.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\LOG.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\LoseScene.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\main.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Plane.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\PlayScene.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\PlugGunTurret.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Point.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\RedNormalEnemy.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Resources.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Slider.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Sprite.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\StageSelectScene.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\StartScene.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Turret.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\TurretButton.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\WinScene.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\WoodBullet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Allegro5Exception.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\AudioHelper.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Bullet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Collider.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\DirtyEffect.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Enemy.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\ExplosionEffect.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\GameEngine.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Group.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\IControl.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\Image.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Users\leosi\Downloads\TowerDefense\ImageButton.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingScene.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resourse\audios\astronomia.ogg">
+      <Filter>資源檔\audios</Filter>
+    </None>
+    <None Include="resourse\audios\happy.ogg">
+      <Filter>資源檔\audios</Filter>
+    </None>
+    <None Include="resourse\audios\play.ogg">
+      <Filter>資源檔\audios</Filter>
+    </None>
+    <None Include="resourse\audios\select.ogg">
+      <Filter>資源檔\audios</Filter>
+    </None>
+    <None Include="resourse\audios\shockwave.ogg">
+      <Filter>資源檔\audios</Filter>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Users\leosi\Downloads\TowerDefense\resources\enemy1.txt">
+      <Filter>資源檔</Filter>
+    </Text>
+    <Text Include="..\..\Users\leosi\Downloads\TowerDefense\resources\enemy2.txt">
+      <Filter>資源檔</Filter>
+    </Text>
+    <Text Include="..\..\Users\leosi\Downloads\TowerDefense\resources\enemy3.txt">
+      <Filter>資源檔</Filter>
+    </Text>
+    <Text Include="..\..\Users\leosi\Downloads\TowerDefense\resources\map1.txt">
+      <Filter>資源檔</Filter>
+    </Text>
+    <Text Include="..\..\Users\leosi\Downloads\TowerDefense\resources\map2.txt">
+      <Filter>資源檔</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resourse\fonts\pirulen.ttf">
+      <Filter>資源檔\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resourse\images\icon.png">
+      <Filter>資源檔\images</Filter>
+    </Image>
+    <Image Include="resourse\images\lose\benjamin-happy.png">
+      <Filter>資源檔\images\lose</Filter>
+    </Image>
+    <Image Include="resourse\images\play\benjamin.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-4.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-5.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-6.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-7.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-8.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-9.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\bullet-10.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dice-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dice-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dice-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dice-4.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dice-5.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dice-6.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dirt.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dirty-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dirty-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\dirty-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-3-head.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-4.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-5.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-6.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-7.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-8.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-9.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-10.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-11.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\explosion-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\explosion-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\explosion-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\explosion-4.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\explosion-5.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\floor.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-4.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-5.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-6.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-7.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-8.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-9.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\light-10.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\plane.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\sand.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\shockwave.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\shoot-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\shoot-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\shoot-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\shoot-4.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\target.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\target-invalid.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\tower-base.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\turret-1.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\turret-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\turret-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\turret-4.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\turret-5.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\turret-6.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\turret-7.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-2.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\play\enemy-3.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resourse\images\stage-select\bar.png">
+      <Filter>資源檔\images\stage-select</Filter>
+    </Image>
+    <Image Include="resourse\images\stage-select\dirt.png">
+      <Filter>資源檔\images\stage-select</Filter>
+    </Image>
+    <Image Include="resourse\images\stage-select\end.png">
+      <Filter>資源檔\images\stage-select</Filter>
+    </Image>
+    <Image Include="resourse\images\stage-select\floor.png">
+      <Filter>資源檔\images\stage-select</Filter>
+    </Image>
+    <Image Include="resourse\images\stage-select\slider.png">
+      <Filter>資源檔\images\stage-select</Filter>
+    </Image>
+    <Image Include="resourse\images\stage-select\slider-blue.png">
+      <Filter>資源檔\images\stage-select</Filter>
+    </Image>
+    <Image Include="resourse\images\start_scene\in.png">
+      <Filter>資源檔\images\start_scene</Filter>
+    </Image>
+    <Image Include="resourse\images\start_scene\out.png">
+      <Filter>資源檔\images\start_scene</Filter>
+    </Image>
+    <Image Include="resourse\images\win\benjamin-sad.png">
+      <Filter>資源檔\images\win</Filter>
+    </Image>
+    <Image Include="resourse\images\win\dirt.png">
+      <Filter>資源檔\images\win</Filter>
+    </Image>
+    <Image Include="resourse\images\win\floor.png">
+      <Filter>資源檔\images\win</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resourse\audios\explosion.wav">
+      <Filter>資源檔\audios</Filter>
+    </Media>
+    <Media Include="resourse\audios\gun.wav">
+      <Filter>資源檔\audios</Filter>
+    </Media>
+    <Media Include="resourse\audios\laser.wav">
+      <Filter>資源檔\audios</Filter>
+    </Media>
+    <Media Include="resourse\audios\lose.wav">
+      <Filter>資源檔\audios</Filter>
+    </Media>
+    <Media Include="resourse\audios\missile.wav">
+      <Filter>資源檔\audios</Filter>
+    </Media>
+    <Media Include="resourse\audios\win.wav">
+      <Filter>資源檔\audios</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WinScene.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodBullet.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro5Exception.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioHelper.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DirtyEffect.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionEffect.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Group.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="IControl.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageButton.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="IObject.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="IScene.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="LOG.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="LoseScene.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugGunTurret.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="RedNormalEnemy.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Slider.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectScene.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Turret.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TurretButton.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewController.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingScene.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
