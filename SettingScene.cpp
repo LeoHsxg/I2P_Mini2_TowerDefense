@@ -46,9 +46,7 @@ void SettingScene::Terminate() {
 	IScene::Terminate();
 }
 void SettingScene::PlayOnClick(int stage) {
-    PlayScene* scene = dynamic_cast<PlayScene*>(Engine::GameEngine::GetInstance().GetScene("play"));
-    scene->MapId = stage;
-    Engine::GameEngine::GetInstance().ChangeScene("play");
+    Engine::GameEngine::GetInstance().ChangeScene("stage-select");
 }
 void SettingScene::BGMSlideOnValueChanged(float value) {
     AudioHelper::ChangeSampleVolume(bgmInstance, value);

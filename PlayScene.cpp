@@ -18,9 +18,11 @@
 #include "Label.hpp"
 // Turret
 #include "PlugGunTurret.hpp"
+#include "MachineGunTurret.hpp"
 #include "Plane.hpp"
 // Enemy
 #include "RedNormalEnemy.hpp"
+#include "DiceNormalEnemy.hpp"
 #include "PlayScene.hpp"
 #include "Resources.hpp"
 #include "Sprite.hpp"
@@ -157,8 +159,11 @@ void PlayScene::Update(float deltaTime) {
 		const Engine::Point SpawnCoordinate = Engine::Point(SpawnGridPoint.x * BlockSize + BlockSize / 2, SpawnGridPoint.y * BlockSize + BlockSize / 2);
 		Enemy* enemy;
 		switch (current.first) {
-		case 1:
+		case 0:
 			EnemyGroup->AddNewObject(enemy = new RedNormalEnemy(SpawnCoordinate.x, SpawnCoordinate.y));
+			break;
+		case 1:
+			EnemyGroup->AddNewObject(enemy = new DiceNormalEnemy(SpawnCoordinate.x, SpawnCoordinate.y));
 			break;
 		// TODO 2 (2/3): You need to modify 'resources/enemy1.txt', or 'resources/enemy2.txt' to spawn the new enemy.
 		// The format is "[EnemyId] [TimeDelay] [Repeat]".
@@ -271,6 +276,7 @@ void PlayScene::OnKeyDown(int keyCode) {
 	// TODO 3 (5/5): Make the W key to create the new turret.
 	else if (keyCode == ALLEGRO_KEY_W) {
 		// Hotkey for new turret.
+		UIBtnClicked(1);
 	}
 	else if (keyCode >= ALLEGRO_KEY_0 && keyCode <= ALLEGRO_KEY_9) {
 		// Hotkey for Speed up.
@@ -354,6 +360,7 @@ void PlayScene::ConstructUI() {
 	UIGroup->AddNewObject(UILives = new Engine::Label(std::string("Life ") + std::to_string(lives), "pirulen.ttf", 24, 1294, 88));
 	// Buttons
 	ConstructButton(0, "play/turret-6.png", PlugGunTurret::Price);
+	ConstructButton(1, "play/turret-1.png", MachineGunTurret::Price);
 	// TODO 3 (3/5): Create a button to support constructing the new turret.
     
 	int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
@@ -382,6 +389,8 @@ void PlayScene::UIBtnClicked(int id) {
     }
 	if (id == 0 && money >= PlugGunTurret::Price) 
 		preview = new PlugGunTurret(0, 0);
+	if (id == 1 && money >= MachineGunTurret::Price) 
+		preview = new MachineGunTurret(0, 0);
 	// TODO 3 (4/5): On the new turret button callback, create the new turret.
 	if (!preview)
 		return;
