@@ -7,7 +7,6 @@
 #include "LoseScene.hpp"
 #include "PlayScene.hpp"
 #include "StartScene.hpp"
-#include "StageSelectScene.hpp"
 #include "WinScene.hpp"
 
 int main(int argc, char **argv) {
