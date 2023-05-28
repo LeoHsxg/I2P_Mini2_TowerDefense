@@ -1,5 +1,5 @@
-#ifndef WOODBULLET_HPP
-#define WOODBULLET_HPP
+#ifndef NERFBULLET_HPP
+#define NERFBULLET_HPP
 #include "Bullet.hpp"
 
 class Enemy;

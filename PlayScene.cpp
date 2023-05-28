@@ -18,16 +18,21 @@
 #include "Label.hpp"
 // Turret
 #include "PlugGunTurret.hpp"
+#include "SuperPlugGunTurret.hpp"
 #include "MachineGunTurret.hpp"
+#include "ShovelTurret.hpp"
+#include "MoveTurret.hpp"
 #include "Plane.hpp"
 // Enemy
 #include "RedNormalEnemy.hpp"
 #include "DiceNormalEnemy.hpp"
+#include "DiceEliteEnemy.hpp"
 #include "PlayScene.hpp"
 #include "Resources.hpp"
 #include "Sprite.hpp"
 #include "Turret.hpp"
 #include "TurretButton.hpp"
+#include "ToolButton.hpp"
 #include "LOG.hpp"
 
 bool PlayScene::DebugMode = false;
@@ -38,7 +43,8 @@ const float PlayScene::DangerTime = 7.61;
 const Engine::Point PlayScene::SpawnGridPoint = Engine::Point(-1, 0);
 const Engine::Point PlayScene::EndGridPoint = Engine::Point(MapWidth, MapHeight - 1);
 // TODO 5 (2/3): Set the cheat code correctly.
-const std::vector<int> PlayScene::code = { ALLEGRO_KEY_UP };
+const std::vector<int> PlayScene::code = { 
+	ALLEGRO_KEY_UP, ALLEGRO_KEY_DOWN, ALLEGRO_KEY_LEFT, ALLEGRO_KEY_RIGHT, ALLEGRO_KEY_LEFT, ALLEGRO_KEY_RIGHT, ALLEGRO_KEY_ENTER};
 Engine::Point PlayScene::GetClientSize() {
 	return Engine::Point(MapWidth * BlockSize, MapHeight * BlockSize);
 }
@@ -137,8 +143,7 @@ void PlayScene::Update(float deltaTime) {
 		ticks += deltaTime;
 		if (enemyWaveData.empty()) {
 			if (EnemyGroup->GetObjects().empty()) {
-				// Free resources.
-				delete TileMapGroup;
+				/*delete TileMapGroup;
 				delete GroundEffectGroup;
 				delete DebugIndicatorGroup;
 				delete TowerGroup;
@@ -146,8 +151,8 @@ void PlayScene::Update(float deltaTime) {
 				delete BulletGroup;
 				delete EffectGroup;
 				delete UIGroup;
-				delete imgTarget;
-                Engine::GameEngine::GetInstance().ChangeScene("win-scene");
+				delete imgTarget;*/
+                Engine::GameEngine::GetInstance().ChangeScene("win");
 			}
 			continue;
 		}
@@ -164,6 +169,9 @@ void PlayScene::Update(float deltaTime) {
 			break;
 		case 1:
 			EnemyGroup->AddNewObject(enemy = new DiceNormalEnemy(SpawnCoordinate.x, SpawnCoordinate.y));
+			break;
+		case 2:
+			EnemyGroup->AddNewObject(enemy = new DiceEliteEnemy(SpawnCoordinate.x, SpawnCoordinate.y));
 			break;
 		// TODO 2 (2/3): You need to modify 'resources/enemy1.txt', or 'resources/enemy2.txt' to spawn the new enemy.
 		// The format is "[EnemyId] [TimeDelay] [Repeat]".
@@ -197,6 +205,7 @@ void PlayScene::Draw() const {
 		}
 	}
 }
+// int button means which button u use, it usaully be the left button
 void PlayScene::OnMouseDown(int button, int mx, int my) {
 	if ((button & 1) && !imgTarget->Visible && preview) {
 		// Cancel turret construct.
@@ -254,20 +263,101 @@ void PlayScene::OnMouseUp(int button, int mx, int my) {
 			mapState[y][x] = TILE_OCCUPIED;
 			OnMouseMove(mx, my);
 		}
+		else if (mapState[y][x] == TILE_OCCUPIED) {
+			if (!preview)
+				return;
+			Turret* upTurret = nullptr;
+			Turret* prvw = dynamic_cast<Turret*>(preview);
+			int xx = x * BlockSize + BlockSize / 2;
+			int yy = y * BlockSize + BlockSize / 2;
+			for (auto& it : TowerGroup->GetObjects())
+				if ((int)(it->Position.x) == xx && (int)(it->Position.y == yy)) {
+					if (dynamic_cast<Turret*>(it) != 0) {
+						// Engine::LOG(Engine::INFO) << "???";
+						upTurret = dynamic_cast<Turret*>(it);
+						break;
+					}
+				}
+			if (upTurret == nullptr)
+				return;
+			// std::cout << "? ?";
+			// upgrade the PlugGunTurret
+			if (dynamic_cast<PlugGunTurret*>(preview) && dynamic_cast<PlugGunTurret*>(upTurret)) {
+				// Purchase.
+				EarnMoney(-preview->GetPrice());
+				// Remove Tower
+				TowerGroup->RemoveObject(upTurret->GetObjectIterator());
+				// Remove Preview.
+				UIGroup->RemoveObject(preview->GetObjectIterator());
+				preview = nullptr;
+				SuperPlugGunTurret *upgrade = new SuperPlugGunTurret(xx, yy);
+				upgrade->Enabled = true;
+				upgrade->Preview = false;
+				TowerGroup->AddNewObject(upgrade);
+				upgrade->Update(0);
+				OnMouseMove(mx, my);
+			}
+			// shovel, remove the turret
+			else if (dynamic_cast<ShovelTurret*>(preview)) {
+				// return money.
+				EarnMoney(upTurret->GetPrice()/2);
+				// Remove Tower
+				TowerGroup->RemoveObject(upTurret->GetObjectIterator());
+				// Remove Preview.
+				UIGroup->RemoveObject(preview->GetObjectIterator());
+				preview = nullptr;
+				mapState[y][x] = TILE_FLOOR;
+				OnMouseMove(mx, my);
+			}
+			// cross, move the turret
+			else if (dynamic_cast<MoveTurret*>(preview)) {
+				// Remove Preview.
+				UIGroup->RemoveObject(preview->GetObjectIterator());
+				preview = nullptr;
+
+				upTurret->GetObjectIterator()->first = true;
+				UIGroup->AddNewObject(upTurret);
+				// TowerGroup->RemoveObject(upTurret->GetObjectIterator());
+				Engine::LOG(Engine::INFO) << "???";
+				// Construct preview.
+				preview = upTurret;
+				preview->Enabled = false;
+				preview->Preview = true;
+				preview->Tint = al_map_rgba(255, 255, 255, 200);
+				// To keep responding when paused.
+				
+				mapState[y][x] = TILE_FLOOR;
+				OnMouseMove(mx, my);
+			}
+		}
 	}
 }
 void PlayScene::OnKeyDown(int keyCode) {
 	IScene::OnKeyDown(keyCode);
 	if (keyCode == ALLEGRO_KEY_TAB) {
 		// TODO 5 (1/3): Set Tab as a code to active / de-active the debug mode.
+		DebugMode = !DebugMode;
 	}
 	else {
 		keyStrokes.push_back(keyCode);
 		if (keyStrokes.size() > code.size())
 			keyStrokes.pop_front();
 		// TODO 5 (3/3): Check whether the input sequence corresponds to the code. If so, active a plane and earn 10000 money.
-        // Active a plane : EffectGroup->AddNewObject(new Plane());
-		// Earn money : money += 10000;
+		bool tag = true;
+		std::list<int>::iterator beg = keyStrokes.begin();
+		// auto beg = keyStrokes.begin();
+		for (int i = 0; i < 7; i++) {
+			if (code[i] != *beg) {
+				tag = false;
+				break;
+			}
+			beg++;
+		}
+		if(tag)
+		{
+			EffectGroup->AddNewObject(new Plane());
+			money += 10000;
+		}
 	}
 	if (keyCode == ALLEGRO_KEY_Q) {
 		// Hotkey for PlugGunTurret.
@@ -292,7 +382,7 @@ void PlayScene::OnKeyDown(int keyCode) {
 	}
 }
 void PlayScene::Hit() {
-	UILives->Text = std::string("Life ") + std::to_string(lives--);
+	UILives->Text = std::string("Life ") + std::to_string(--lives);
 	if (lives <= 0) {
 		Engine::GameEngine::GetInstance().ChangeScene("lose");
 	}
@@ -327,6 +417,7 @@ void PlayScene::ReadMap() {
 	if (static_cast<int>(mapData.size()) != MapWidth * MapHeight)
 		throw std::ios_base::failure("Map data is corrupted.");
 	// Store map in 2d array.
+	// vector<int>(a, b) a -> number, b -> value
 	mapState = std::vector<std::vector<TileType>>(MapHeight, std::vector<TileType>(MapWidth));
 	for (int i = 0; i < MapHeight; i++) {
 		for (int j = 0; j < MapWidth; j++) {
@@ -359,8 +450,10 @@ void PlayScene::ConstructUI() {
 	UIGroup->AddNewObject(UIMoney = new Engine::Label(std::string("$") + std::to_string(money), "pirulen.ttf", 24, 1294, 48));
 	UIGroup->AddNewObject(UILives = new Engine::Label(std::string("Life ") + std::to_string(lives), "pirulen.ttf", 24, 1294, 88));
 	// Buttons
-	ConstructButton(0, "play/turret-6.png", PlugGunTurret::Price);
-	ConstructButton(1, "play/turret-1.png", MachineGunTurret::Price);
+	ConstructTurretButton(0, "play/turret-6.png", PlugGunTurret::Price);
+	ConstructTurretButton(1, "play/turret-1.png", MachineGunTurret::Price);
+	ConstructToolButton(4, "play/shovel.png", 0);
+	ConstructToolButton(5, "play/cross-2.png", 0);
 	// TODO 3 (3/5): Create a button to support constructing the new turret.
     
 	int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
@@ -371,12 +464,23 @@ void PlayScene::ConstructUI() {
 	UIGroup->AddNewObject(dangerIndicator);
 }
 
-void PlayScene::ConstructButton(int id, std::string sprite, int price) {
+void PlayScene::ConstructTurretButton(int id, std::string sprite, int price) {
 	TurretButton* btn;
 	btn = new TurretButton("play/floor.png", "play/dirt.png",
 		Engine::Sprite("play/tower-base.png", 1294 + id * 76, 136, 0, 0, 0, 0),
 		Engine::Sprite(sprite, 1294 + id * 76, 136 - 8, 0, 0, 0, 0)
 		, 1294 + id * 76, 136, price);
+	// Reference: Class Member Function Pointer and std::bind.
+	btn->SetOnClickCallback(std::bind(&PlayScene::UIBtnClicked, this, id));
+	UIGroup->AddNewControlObject(btn);
+}
+
+void PlayScene::ConstructToolButton(int id, std::string sprite, int price) {
+	TurretButton* btn;
+	btn = new TurretButton("play/floor.png", "play/dirt.png",
+		Engine::Sprite("play/null.png", 1294 + (id % 4) * 76, 136 + (id / 4) * 76, 0, 0, 0, 0),
+		Engine::Sprite(sprite, 1294 + (id % 4) * 76, 136 + (id / 4) * 76, 0, 0, 0, 0)
+		, 1294 + (id % 4) * 76, 136 + (id / 4) * 76, price);
 	// Reference: Class Member Function Pointer and std::bind.
 	btn->SetOnClickCallback(std::bind(&PlayScene::UIBtnClicked, this, id));
 	UIGroup->AddNewControlObject(btn);
@@ -391,10 +495,15 @@ void PlayScene::UIBtnClicked(int id) {
 		preview = new PlugGunTurret(0, 0);
 	if (id == 1 && money >= MachineGunTurret::Price) 
 		preview = new MachineGunTurret(0, 0);
+	if (id == 4)
+		preview = new ShovelTurret(0, 0);
+	if (id == 5)
+		preview = new MoveTurret(0, 0);
 	// TODO 3 (4/5): On the new turret button callback, create the new turret.
 	if (!preview)
 		return;
 	preview->Position = Engine::GameEngine::GetInstance().GetMousePosition();
+	// max value is 255 in this method
 	preview->Tint = al_map_rgba(255, 255, 255, 200);
 	preview->Enabled = false;
 	preview->Preview = true;

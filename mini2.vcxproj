@@ -142,10 +142,12 @@
     <ClCompile Include="AudioHelper.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="DiceEliteEnemy.cpp" />
     <ClCompile Include="DiceNormalEnemy.cpp" />
     <ClCompile Include="DirtyEffect.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="ExplosionEffect.cpp" />
+    <ClCompile Include="FireBullet.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="Group.cpp" />
     <ClCompile Include="IControl.cpp" />
@@ -158,6 +160,7 @@
     <ClCompile Include="LoseScene.cpp" />
     <ClCompile Include="MachineGunTurret.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoveTurret.cpp" />
     <ClCompile Include="NerfBullet.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PlayScene.cpp" />
@@ -166,10 +169,14 @@
     <ClCompile Include="RedNormalEnemy.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="SettingScene.cpp" />
+    <ClCompile Include="ShootEffect.cpp" />
+    <ClCompile Include="ShovelTurret.cpp" />
     <ClCompile Include="Slider.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="StartScene.cpp" />
+    <ClCompile Include="SuperPlugGunTurret.cpp" />
+    <ClCompile Include="ToolButton.cpp" />
     <ClCompile Include="Turret.cpp" />
     <ClCompile Include="TurretButton.cpp" />
     <ClCompile Include="WinScene.cpp" />
@@ -194,6 +201,9 @@
     <Font Include="resourse\fonts\pirulen.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\images\play\bullet-double.png" />
+    <Image Include="resources\images\play\null.png" />
+    <Image Include="resources\images\play\shovel.png" />
     <Image Include="resourse\images\icon.png" />
     <Image Include="resourse\images\lose\benjamin-happy.png" />
     <Image Include="resourse\images\play\benjamin.png" />
@@ -287,10 +297,12 @@
     <ClInclude Include="AudioHelper.hpp" />
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="Collider.hpp" />
+    <ClInclude Include="DiceEliteEnemy.hpp" />
     <ClInclude Include="DiceNormalEnemy.hpp" />
     <ClInclude Include="DirtyEffect.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="ExplosionEffect.hpp" />
+    <ClInclude Include="FireBullet.hpp" />
     <ClInclude Include="GameEngine.hpp" />
     <ClInclude Include="Group.hpp" />
     <ClInclude Include="IControl.hpp" />
@@ -302,6 +314,7 @@
     <ClInclude Include="LOG.hpp" />
     <ClInclude Include="LoseScene.hpp" />
     <ClInclude Include="MachineGunTurret.hpp" />
+    <ClInclude Include="MoveTurret.hpp" />
     <ClInclude Include="NerfBullet.hpp" />
     <ClInclude Include="Plane.hpp" />
     <ClInclude Include="PlayScene.hpp" />
@@ -310,10 +323,14 @@
     <ClInclude Include="RedNormalEnemy.hpp" />
     <ClInclude Include="Resources.hpp" />
     <ClInclude Include="SettingScene.hpp" />
+    <ClInclude Include="ShootEffect.hpp" />
+    <ClInclude Include="ShovelTurret.hpp" />
     <ClInclude Include="Slider.hpp" />
     <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="StageSelectScene.hpp" />
     <ClInclude Include="StartScene.hpp" />
+    <ClInclude Include="SuperPlugGunTurret.hpp" />
+    <ClInclude Include="ToolButton.hpp" />
     <ClInclude Include="Turret.hpp" />
     <ClInclude Include="TurretButton.hpp" />
     <ClInclude Include="ViewController.h" />

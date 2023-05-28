@@ -78,7 +78,8 @@ public:
 	void ReadMap();
 	void ReadEnemyWave();
 	void ConstructUI();
-	void ConstructButton(int id, std::string sprite, int price);
+	void ConstructTurretButton(int id, std::string sprite, int price);
+	void ConstructToolButton(int id, std::string sprite, int price);
 	void UIBtnClicked(int id);
 	bool CheckSpaceValid(int x, int y);
 	std::vector<std::vector<int>> CalculateBFSDistance();

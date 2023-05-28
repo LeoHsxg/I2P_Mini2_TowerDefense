@@ -11,6 +11,12 @@ class PlayScene;
 
 class Turret: public Engine::Sprite {
 protected:
+    enum TurretType {
+        TURRET_PLUG,
+        TURRET_MACHINE,
+        TOOL_SHOVEL,
+        TOOL_SHIFTER,
+    };
     int price;
     float coolDown;
     float reload = 0;
@@ -24,8 +30,9 @@ protected:
 public:
     bool Enabled = true;
     bool Preview = false;
+    TurretType turretType;
     Enemy* Target = nullptr;
-    Turret(std::string imgBase, std::string imgTurret, float x, float y, float radius, int price, float coolDown);
+    Turret(TurretType turretType,std::string imgBase, std::string imgTurret, float x, float y, float radius, int price, float coolDown);
     void Update(float deltaTime) override;
     void Draw() const override;
 	int GetPrice() const;

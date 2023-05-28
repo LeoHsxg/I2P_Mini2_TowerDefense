@@ -37,11 +37,20 @@
     <Filter Include="資源檔\images\win">
       <UniqueIdentifier>{0f1837db-b76a-4a05-b1dc-f200ebcea463}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\Enemy">
+      <UniqueIdentifier>{2aa453de-0b9c-4520-b55a-71316e9464ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Scene">
+      <UniqueIdentifier>{d36c7d16-a0e5-4fb8-839e-04835864f192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Bullet">
+      <UniqueIdentifier>{398967a2-5b83-4a65-80bf-688508253a6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Turret">
+      <UniqueIdentifier>{16dadc83-b5be-4e53-85cf-87e8340d5f4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SettingScene.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="Group.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
@@ -57,16 +66,10 @@
     <ClCompile Include="AudioHelper.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="DirtyEffect.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="ExplosionEffect.cpp">
@@ -93,31 +96,13 @@
     <ClCompile Include="LOG.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="LoseScene.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="PlugGunTurret.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="Point.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="RedNormalEnemy.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="WinScene.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="WoodBullet.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="Slider.cpp">
@@ -126,26 +111,74 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="StageSelectScene.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="StartScene.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="Turret.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="TurretButton.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="DiceNormalEnemy.cpp">
+    <ClCompile Include="ShootEffect.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="MachineGunTurret.cpp">
-      <Filter>來源檔案</Filter>
+    <ClCompile Include="DiceNormalEnemy.cpp">
+      <Filter>來源檔案\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="RedNormalEnemy.cpp">
+      <Filter>來源檔案\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="LoseScene.cpp">
+      <Filter>來源檔案\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>來源檔案\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingScene.cpp">
+      <Filter>來源檔案\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelectScene.cpp">
+      <Filter>來源檔案\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>來源檔案\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="WinScene.cpp">
+      <Filter>來源檔案\Scene</Filter>
     </ClCompile>
     <ClCompile Include="NerfBullet.cpp">
+      <Filter>來源檔案\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="WoodBullet.cpp">
+      <Filter>來源檔案\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineGunTurret.cpp">
+      <Filter>來源檔案\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugGunTurret.cpp">
+      <Filter>來源檔案\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="Turret.cpp">
+      <Filter>來源檔案\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>來源檔案\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>來源檔案\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="DiceEliteEnemy.cpp">
+      <Filter>來源檔案\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolButton.cpp">
       <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="SuperPlugGunTurret.cpp">
+      <Filter>來源檔案\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBullet.cpp">
+      <Filter>來源檔案\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="ShovelTurret.cpp">
+      <Filter>來源檔案\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveTurret.cpp">
+      <Filter>來源檔案\Turret</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -426,6 +459,15 @@
     <Image Include="resourse\images\win\floor.png">
       <Filter>資源檔\images\win</Filter>
     </Image>
+    <Image Include="resources\images\play\shovel.png">
+      <Filter>標頭檔</Filter>
+    </Image>
+    <Image Include="resources\images\play\null.png">
+      <Filter>資源檔\images\play</Filter>
+    </Image>
+    <Image Include="resources\images\play\bullet-double.png">
+      <Filter>資源檔</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="resourse\audios\explosion.wav">
@@ -554,6 +596,27 @@
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="NerfBullet.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootEffect.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DiceEliteEnemy.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolButton.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperPlugGunTurret.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBullet.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ShovelTurret.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveTurret.hpp">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
