@@ -36,12 +36,17 @@ void Slider::SetValue(float value) {
 void Slider::OnMouseDown(int button, int mx, int my) {
 	// TODO 1 (5/7): Set 'Down' to true if mouse is in the slider.
 	if ((button & 1) && Bar.Position.x <= mx && mx <= Bar.Position.x + Bar.Size.x
-		 && Bar.Position.y <= my && my <= Bar.Position.y + Bar.Size.y) {
+		 && Bar.Position.y - 21 <= my && my <= Bar.Position.y + Bar.Size.y + 21) {
 		Down = true;
 	}
 }
 void Slider::OnMouseUp(int button, int mx, int my) {
 	// TODO 1 (6/7): Set 'Down' to false.
+	if ((button & 1) && Bar.Position.x <= mx && mx <= Bar.Position.x + Bar.Size.x
+		&& Bar.Position.y - 21 <= my && my <= Bar.Position.y + Bar.Size.y + 21
+		&& Down == true) {
+		Slider::OnMouseMove(mx, my);
+	}
 	Down = false;
 }
 void Slider::OnMouseMove(int mx, int my) {

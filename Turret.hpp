@@ -19,7 +19,7 @@ protected:
     };
     int price;
     float coolDown;
-    float reload = 0;
+    float reload;
     float rotateRadian = 2 * ALLEGRO_PI;
     Sprite imgBase;
     std::list<Turret*>::iterator lockedTurretIterator;
@@ -28,8 +28,10 @@ protected:
     virtual void CreateBullet() = 0;
 
 public:
+    int bullet;
     bool Enabled = true;
     bool Preview = false;
+    bool rotInit = false;
     TurretType turretType;
     Enemy* Target = nullptr;
     Turret(TurretType turretType,std::string imgBase, std::string imgTurret, float x, float y, float radius, int price, float coolDown);

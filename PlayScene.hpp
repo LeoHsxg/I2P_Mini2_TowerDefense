@@ -32,7 +32,10 @@ protected:
 	int money;
 	int SpeedMult;
 public:
+	static bool isShifter;
+	static bool Pause;
 	static bool DebugMode;
+	static int oriKeycode;
 	static const std::vector<Engine::Point> directions;
 	static const int MapWidth, MapHeight;
 	static const int BlockSize;
@@ -55,6 +58,7 @@ public:
 	Group* UIGroup;
 	Engine::Label* UIMoney;
 	Engine::Label* UILives;
+	Engine::Label* UIPause;
 	Engine::Image* imgTarget;
 	Engine::Sprite* dangerIndicator;
 	Turret* preview;

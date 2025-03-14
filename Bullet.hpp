@@ -15,6 +15,7 @@ class Bullet : public Engine::Sprite {
 protected:
 	float speed;
 	float damage;
+	float timer = 0;
 	Turret* parent;
 	PlayScene* getPlayScene();
 	virtual void OnExplode(Enemy* enemy);

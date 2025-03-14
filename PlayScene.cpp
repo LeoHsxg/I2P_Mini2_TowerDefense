@@ -1,4 +1,5 @@
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 #include <algorithm>
 #include <cmath>
 #include <fstream>
@@ -20,6 +21,8 @@
 #include "PlugGunTurret.hpp"
 #include "SuperPlugGunTurret.hpp"
 #include "MachineGunTurret.hpp"
+#include "RotateTurret.hpp"
+#include "ClickGunTurret.hpp"
 #include "ShovelTurret.hpp"
 #include "MoveTurret.hpp"
 #include "Plane.hpp"
@@ -36,6 +39,9 @@
 #include "LOG.hpp"
 
 bool PlayScene::DebugMode = false;
+bool PlayScene::isShifter = false;
+bool PlayScene::Pause = false;
+int PlayScene::oriKeycode;
 const std::vector<Engine::Point> PlayScene::directions = { Engine::Point(-1, 0), Engine::Point(0, -1), Engine::Point(1, 0), Engine::Point(0, 1) };
 const int PlayScene::MapWidth = 20, PlayScene::MapHeight = 13;
 const int PlayScene::BlockSize = 64;
@@ -58,6 +64,7 @@ void PlayScene::Initialize() {
 	lives = 10;
 	money = 150;
 	SpeedMult = 1;
+	oriKeycode = 28;
 	// Add groups from bottom to top.
 	AddNewObject(TileMapGroup = new Group());
 	AddNewObject(GroundEffectGroup = new Group());
@@ -88,6 +95,7 @@ void PlayScene::Initialize() {
 }
 void PlayScene::Terminate() {
 	AudioHelper::StopBGM(bgmId);
+	AudioHelper::StopSample(bgmInstance);
 	AudioHelper::StopSample(deathBGMInstance);
 	deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
 	IScene::Terminate();
@@ -204,6 +212,11 @@ void PlayScene::Draw() const {
 			}
 		}
 	}
+	if (SpeedMult == 0) {
+		int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
+		int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
+		al_draw_filled_rectangle(0, 0, w, h, al_map_rgba(0, 0, 0, 120));
+	}
 }
 // int button means which button u use, it usaully be the left button
 void PlayScene::OnMouseDown(int button, int mx, int my) {
@@ -212,7 +225,30 @@ void PlayScene::OnMouseDown(int button, int mx, int my) {
 		UIGroup->RemoveObject(preview->GetObjectIterator());
 		preview = nullptr;
 	}
+	Engine::LOG(Engine::INFO) << "???";
 	IScene::OnMouseDown(button, mx, my);
+	const int x = mx / BlockSize;
+	const int y = my / BlockSize;
+	if (button & 1) {
+		if (!preview) {
+			if (SpeedMult == 0)
+				return;
+			ClickGunTurret* upTurret = nullptr;
+			int xx = x * BlockSize + BlockSize / 2;
+			int yy = y * BlockSize + BlockSize / 2;
+			for (auto& it : TowerGroup->GetObjects())
+				if ((int)(it->Position.x) == xx && (int)(it->Position.y == yy)) {
+					if (dynamic_cast<ClickGunTurret*>(it) != 0) {
+						// Engine::LOG(Engine::INFO) << "???";
+						upTurret = dynamic_cast<ClickGunTurret*>(it);
+						break;
+					}
+				}
+			if (upTurret == nullptr)
+				return;
+			upTurret->CreateBullet();
+		}
+	}
 }
 void PlayScene::OnMouseMove(int mx, int my) {
 	IScene::OnMouseMove(mx, my);
@@ -236,6 +272,9 @@ void PlayScene::OnMouseUp(int button, int mx, int my) {
 		if (mapState[y][x] != TILE_OCCUPIED) {
 			if (!preview)
 				return;
+			if (dynamic_cast<ShovelTurret*>(preview) || 
+					dynamic_cast<MoveTurret*>(preview))
+				return;
 			// Check if valid.
 			if (!CheckSpaceValid(x, y)) {
 				Engine::Sprite* sprite;
@@ -244,7 +283,10 @@ void PlayScene::OnMouseUp(int button, int mx, int my) {
 				return;
 			}
 			// Purchase.
-			EarnMoney(-preview->GetPrice());
+			if (isShifter == false)
+				EarnMoney(-preview->GetPrice());
+			else
+				isShifter = false;
 			// Remove Preview.
 			preview->GetObjectIterator()->first = false;
 			UIGroup->RemoveObject(preview->GetObjectIterator());
@@ -284,7 +326,10 @@ void PlayScene::OnMouseUp(int button, int mx, int my) {
 			// upgrade the PlugGunTurret
 			if (dynamic_cast<PlugGunTurret*>(preview) && dynamic_cast<PlugGunTurret*>(upTurret)) {
 				// Purchase.
-				EarnMoney(-preview->GetPrice());
+				if (isShifter == false)
+					EarnMoney(-preview->GetPrice());
+				else
+					isShifter = false;
 				// Remove Tower
 				TowerGroup->RemoveObject(upTurret->GetObjectIterator());
 				// Remove Preview.
@@ -315,17 +360,25 @@ void PlayScene::OnMouseUp(int button, int mx, int my) {
 				UIGroup->RemoveObject(preview->GetObjectIterator());
 				preview = nullptr;
 
-				upTurret->GetObjectIterator()->first = true;
-				UIGroup->AddNewObject(upTurret);
-				// TowerGroup->RemoveObject(upTurret->GetObjectIterator());
-				Engine::LOG(Engine::INFO) << "???";
 				// Construct preview.
-				preview = upTurret;
+				if (dynamic_cast<PlugGunTurret*>(upTurret))
+					preview = new PlugGunTurret(0, 0);
+				else if (dynamic_cast<SuperPlugGunTurret*>(upTurret))
+					preview = new SuperPlugGunTurret(0, 0);
+				else if (dynamic_cast<MachineGunTurret*>(upTurret))
+					preview = new MachineGunTurret(0, 0);
+				else if (dynamic_cast<RotateTurret*>(upTurret))
+					preview = new RotateTurret(0, 0);
+				else if (dynamic_cast<ClickGunTurret*>(upTurret))
+					preview = new ClickGunTurret(0, 0);
+				preview->Position = Engine::GameEngine::GetInstance().GetMousePosition();
+				preview->Tint = al_map_rgba(255, 255, 255, 200);
 				preview->Enabled = false;
 				preview->Preview = true;
-				preview->Tint = al_map_rgba(255, 255, 255, 200);
-				// To keep responding when paused.
-				
+				UIGroup->AddNewObject(preview);
+				TowerGroup->RemoveObject(upTurret->GetObjectIterator());
+				// Engine::LOG(Engine::INFO) << "???";
+				isShifter = true;
 				mapState[y][x] = TILE_FLOOR;
 				OnMouseMove(mx, my);
 			}
@@ -353,8 +406,7 @@ void PlayScene::OnKeyDown(int keyCode) {
 			}
 			beg++;
 		}
-		if(tag)
-		{
+		if(tag){
 			EffectGroup->AddNewObject(new Plane());
 			money += 10000;
 		}
@@ -368,9 +420,30 @@ void PlayScene::OnKeyDown(int keyCode) {
 		// Hotkey for new turret.
 		UIBtnClicked(1);
 	}
-	else if (keyCode >= ALLEGRO_KEY_0 && keyCode <= ALLEGRO_KEY_9) {
+	else if (keyCode >= ALLEGRO_KEY_0 && keyCode <= ALLEGRO_KEY_9 || keyCode == ALLEGRO_KEY_ESCAPE) {
 		// Hotkey for Speed up.
-		SpeedMult = keyCode - ALLEGRO_KEY_0;
+		if (keyCode == ALLEGRO_KEY_ESCAPE)
+			Pause = !Pause;
+		if (keyCode == ALLEGRO_KEY_0 || Pause) {
+			SpeedMult = 0;
+		}
+		else {
+			if(keyCode == ALLEGRO_KEY_ESCAPE)
+				SpeedMult = oriKeycode - ALLEGRO_KEY_0;
+			else {
+				SpeedMult = keyCode - ALLEGRO_KEY_0;
+				oriKeycode = keyCode;
+			}
+		}
+		if (SpeedMult == 0) {
+			int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
+			int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
+			UIGroup->AddNewObject(UIPause = new Engine::Label(std::string("PAUSE"), "pirulen.ttf", 48, w/2 - 300/2, h/2 - 60/2));
+		}
+		else if (UIPause != nullptr) {
+			UIGroup->RemoveObject(UIPause->GetObjectIterator());
+			UIPause = nullptr;
+		}
 	}
 	else if (keyCode == ALLEGRO_KEY_M) {
 		// Hotkey for mute / unmute.
@@ -452,6 +525,8 @@ void PlayScene::ConstructUI() {
 	// Buttons
 	ConstructTurretButton(0, "play/turret-6.png", PlugGunTurret::Price);
 	ConstructTurretButton(1, "play/turret-1.png", MachineGunTurret::Price);
+	ConstructTurretButton(2, "play/planet.png", RotateTurret::Price);
+	ConstructTurretButton(3, "play/turret-7.png", ClickGunTurret::Price);
 	ConstructToolButton(4, "play/shovel.png", 0);
 	ConstructToolButton(5, "play/cross-2.png", 0);
 	// TODO 3 (3/5): Create a button to support constructing the new turret.
@@ -495,6 +570,10 @@ void PlayScene::UIBtnClicked(int id) {
 		preview = new PlugGunTurret(0, 0);
 	if (id == 1 && money >= MachineGunTurret::Price) 
 		preview = new MachineGunTurret(0, 0);
+	if (id == 2 && money >= RotateTurret::Price)
+		preview = new RotateTurret(0, 0);
+	if (id == 3 && money >= ClickGunTurret::Price)
+		preview = new ClickGunTurret(0, 0);
 	if (id == 4)
 		preview = new ShovelTurret(0, 0);
 	if (id == 5)

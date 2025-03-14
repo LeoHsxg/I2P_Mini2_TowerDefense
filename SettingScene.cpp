@@ -20,10 +20,10 @@ void SettingScene::Initialize() {
     int halfH = h / 2;
     Engine::ImageButton* btn;
     // back button
-    btn = new Engine::ImageButton("stage-select/dirt.png", "stage-select/floor.png", w - 400, h - 200, 400, 100);
+    btn = new Engine::ImageButton("stage-select/dirt.png", "stage-select/floor.png", w - 500, h - 200, 400, 100);
     btn->SetOnClickCallback(std::bind(&SettingScene::PlayOnClick, this, 1));
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Back", "pirulen.ttf", 48, w - 300,h-100, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Back", "pirulen.ttf", 48, w - 300, h - 150, 0, 0, 0, 255, 0.5, 0.5));
     // TODO 1 (3/7): Move the slider to the setting scene.
     Slider *sliderBGM, *sliderSFX;
     sliderBGM = new Slider(40 + halfW - 95, halfH - 50 - 2, 190, 4);

@@ -180,6 +180,15 @@
     <ClCompile Include="MoveTurret.cpp">
       <Filter>來源檔案\Turret</Filter>
     </ClCompile>
+    <ClCompile Include="RotateTurret.cpp">
+      <Filter>來源檔案\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateBullet.cpp">
+      <Filter>來源檔案\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="ClickGunTurret.cpp">
+      <Filter>來源檔案\Turret</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="resourse\audios\astronomia.ogg">
@@ -617,6 +626,15 @@
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="MoveTurret.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateTurret.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateBullet.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ClickGunTurret.hpp">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>

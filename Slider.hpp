@@ -4,6 +4,7 @@
 
 #include "Image.hpp"
 #include "ImageButton.hpp"
+#include "GameEngine.hpp"
 
 class Slider : public Engine::ImageButton {
 private:

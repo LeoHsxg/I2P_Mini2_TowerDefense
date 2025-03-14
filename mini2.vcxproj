@@ -141,6 +141,7 @@
     <ClCompile Include="Allegro5Exception.cpp" />
     <ClCompile Include="AudioHelper.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="ClickGunTurret.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="DiceEliteEnemy.cpp" />
     <ClCompile Include="DiceNormalEnemy.cpp" />
@@ -168,6 +169,8 @@
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RedNormalEnemy.cpp" />
     <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="RotateBullet.cpp" />
+    <ClCompile Include="RotateTurret.cpp" />
     <ClCompile Include="SettingScene.cpp" />
     <ClCompile Include="ShootEffect.cpp" />
     <ClCompile Include="ShovelTurret.cpp" />
@@ -296,6 +299,7 @@
     <ClInclude Include="Allegro5Exception.hpp" />
     <ClInclude Include="AudioHelper.hpp" />
     <ClInclude Include="Bullet.hpp" />
+    <ClInclude Include="ClickGunTurret.hpp" />
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="DiceEliteEnemy.hpp" />
     <ClInclude Include="DiceNormalEnemy.hpp" />
@@ -322,6 +326,8 @@
     <ClInclude Include="Point.hpp" />
     <ClInclude Include="RedNormalEnemy.hpp" />
     <ClInclude Include="Resources.hpp" />
+    <ClInclude Include="RotateBullet.hpp" />
+    <ClInclude Include="RotateTurret.hpp" />
     <ClInclude Include="SettingScene.hpp" />
     <ClInclude Include="ShootEffect.hpp" />
     <ClInclude Include="ShovelTurret.hpp" />

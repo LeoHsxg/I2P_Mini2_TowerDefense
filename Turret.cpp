@@ -18,6 +18,7 @@ PlayScene* Turret::getPlayScene() {
 Turret::Turret(TurretType turretType, std::string imgBase, std::string imgTurret, float x, float y, float radius, int price, float coolDown) :
 	Sprite(imgTurret, x, y), price(price), coolDown(coolDown), imgBase(imgBase, x, y) {
 	CollisionRadius = radius;
+	reload = coolDown;
 }
 void Turret::Update(float deltaTime) {
 	Sprite::Update(deltaTime);
@@ -52,6 +53,11 @@ void Turret::Update(float deltaTime) {
 		Engine::Point originRotation = Engine::Point(cos(Rotation - ALLEGRO_PI / 2), sin(Rotation - ALLEGRO_PI / 2));
 		Engine::Point targetRotation = (Target->Position - Position).Normalize();
 		float maxRotateRadian = rotateRadian * deltaTime;
+		if (rotInit == false) {
+			Rotation = atan2(targetRotation.y, targetRotation.x) + ALLEGRO_PI / 2;
+			rotInit = true;
+			return;
+		}
 		float cosTheta = originRotation.Dot(targetRotation);
 		// Might have floating-point precision error.
 		if (cosTheta > 1) cosTheta = 1;
